@@ -1,0 +1,65 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default-deny Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper Functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // Validation helper for Ficha entity to prevent shadow fields and type injections
+    function isValidFicha(data) {
+      return data.userId == request.auth.uid
+        && data.tipo is string
+        && (data.tipo == 'artista' || data.tipo == 'movimento' || data.tipo == 'musica' || data.tipo == 'roteiro' || data.tipo == 'instrumento')
+        && data.titulo is string
+        && data.titulo.size() <= 10000
+        && data.subtitulo is string
+        && data.subtitulo.size() <= 10000
+        && data.createdAt is string
+        && data.createdAt.size() <= 100
+        && data.updatedAt is string
+        && data.updatedAt.size() <= 100;
+    }
+
+    // Fichas Collection Rule Set
+    match /fichas/{fichaId} {
+      allow get: if isSignedIn() && existing().userId == request.auth.uid;
+      
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+
+      allow create: if isSignedIn() 
+        && isValidId(fichaId)
+        && isValidFicha(incoming());
+
+      allow update: if isSignedIn()
+        && isValidId(fichaId)
+        && isValidFicha(incoming())
+        && incoming().userId == existing().userId
+        && incoming().createdAt == existing().createdAt;
+
+      allow delete: if isSignedIn() && existing().userId == request.auth.uid;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Gerador de Fichas de Estudo",
+  "description": "Um gerador de fichas de estudo sobre música e história, preenchidas por IA, revisadas pelo usuário, com suporte para exportação em MD e HTML.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

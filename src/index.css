@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: "DM Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom Scrollbar - High visibility for desktop and mobile */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #c4a35a #09090b; /* thumb track */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #a1824a; /* Classic solid Gold */
+  border-radius: 5px;
+  border: 2px solid #09090b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d6b870; /* Brighter gold accent on hover */
+}
+
+/* Specific sidebar catalog list scrollbar highlight - Solid high-contrast colors! */
+.sidebar-scrollable {
+  scrollbar-width: auto;
+  scrollbar-color: #c4a35a #09090b;
+}
+.sidebar-scrollable::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.sidebar-scrollable::-webkit-scrollbar-track {
+  background: #09090b;
+  border-radius: 4px;
+}
+.sidebar-scrollable::-webkit-scrollbar-thumb {
+  background: #c4a35a; /* High-contrast solid gold */
+  border-radius: 4px;
+  border: 1px solid #09090b;
+}
+.sidebar-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #ebdcb9;
+}
+
+/* Reading Light Mode for FichaCard */
+.fichacard-light-mode {
+  background-color: #FAF8F5 !important;
+  color: #292524 !important;
+  border-color: #E7E5E4 !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05) !important;
+}
+
+.fichacard-light-mode h1,
+.fichacard-light-mode h2,
+.fichacard-light-mode h3,
+.fichacard-light-mode h4,
+.fichacard-light-mode .text-zinc-100 {
+  color: #1C1917 !important;
+}
+
+.fichacard-light-mode h1:focus,
+.fichacard-light-mode [contenteditable]:focus {
+  background-color: #F5F2EB !important;
+  color: #1C1917 !important;
+}
+
+.fichacard-light-mode .text-zinc-200,
+.fichacard-light-mode .text-[#ebdcb9],
+.fichacard-light-mode .text-zinc-300 {
+  color: #292524 !important;
+}
+
+.fichacard-light-mode .text-zinc-400 {
+  color: #44403C !important;
+}
+
+.fichacard-light-mode .text-zinc-450,
+.fichacard-light-mode .text-zinc-455,
+.fichacard-light-mode .text-zinc-350 {
+  color: #57524E !important;
+}
+
+.fichacard-light-mode .text-zinc-500 {
+  color: #78716C !important;
+}
+
+/* Background containers inside the card */
+.fichacard-light-mode .bg-zinc-950\/40,
+.fichacard-light-mode .bg-zinc-950\/30,
+.fichacard-light-mode .bg-zinc-950\/20,
+.fichacard-light-mode .bg-zinc-950\/15,
+.fichacard-light-mode .bg-zinc-950\/70,
+.fichacard-light-mode .bg-zinc-950\/25,
+.fichacard-light-mode .bg-zinc-950\/60,
+.fichacard-light-mode .bg-zinc-950\/10 {
+  background-color: #F5F2EB !important;
+  border-color: #E7E5E4 !important;
+}
+
+/* Specific sidebar meta section inside artist card */
+.fichacard-light-mode .bg-zinc-950\/70 {
+  background-color: #F2EFE9 !important;
+  border-color: #E2DFD7 !important;
+}
+
+.fichacard-light-mode .bg-[#c4a35a]\/10 {
+  background-color: #F8EEDA !important;
+  border-color: #DDB86C !important;
+  color: #8C6D23 !important;
+}
+
+/* Grid blocks, tables and cards */
+.fichacard-light-mode .border-zinc-900,
+.fichacard-light-mode .border-zinc-900\/70,
+.fichacard-light-mode .border-zinc-900\/80,
+.fichacard-light-mode .border-zinc-900\/60,
+.fichacard-light-mode .border-zinc-900\/85,
+.fichacard-light-mode .border-zinc-850,
+.fichacard-light-mode .border-zinc-850\/60,
+.fichacard-light-mode .border-zinc-800 {
+  border-color: #E2DFD7 !important;
+}
+
+.fichacard-light-mode tr:hover {
+  background-color: #EFECE6 !important;
+}
+
+.fichacard-light-mode .bg-zinc-900\/60 {
+  background-color: #EFECE6 !important;
+  border-color: #E2DFD7 !important;
+  color: #44403C !important;
+}
+
+.fichacard-light-mode .bg-zinc-900\/40 {
+  background-color: #EFECE6 !important;
+  color: #44403C !important;
+}
+
+.fichacard-light-mode input {
+  background-color: #FFFFFF !important;
+  border-color: #D6D3D1 !important;
+  color: #1C1917 !important;
+}
+
+.fichacard-light-mode table {
+  background-color: #FAF8F5 !important;
+}
+
+.fichacard-light-mode td {
+  border-color: #E2DFD7 !important;
+}
+
+.fichacard-light-mode .bg-zinc-950 {
+  background-color: #FFFFFF !important;
+}
+
+/* Image styling in light mode */
+.fichacard-light-mode img {
+  filter: sepia(0.15) brightness(0.98) !important;
+}

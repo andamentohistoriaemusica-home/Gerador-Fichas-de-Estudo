@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <script>
+      (function() {
+        try {
+          var origFetch = window.fetch;
+          var currFetch = function() {
+            return origFetch.apply(window, arguments);
+          };
+          var desc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          if (!desc || desc.configurable) {
+            Object.defineProperty(window, 'fetch', {
+              get: function() { return currFetch; },
+              set: function(v) { currFetch = v; },
+              configurable: true,
+              enumerable: true
+            });
+          }
+          if (typeof globalThis !== 'undefined' && globalThis !== window) {
+            var gtDesc = Object.getOwnPropertyDescriptor(globalThis, 'fetch');
+            if (!gtDesc || gtDesc.configurable) {
+              Object.defineProperty(globalThis, 'fetch', {
+                get: function() { return currFetch; },
+                set: function(v) { currFetch = v; },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Fichas de Estudo</title>
+    <meta name="description" content="Um gerador de fichas de estudo sobre música e história, preenchidas por IA, revisadas pelo usuário, com suporte para exportação em MD e HTML." />
+    <meta property="og:title" content="Gerador de Fichas de Estudo" />
+    <meta property="og:description" content="Um gerador de fichas de estudo sobre música e história, preenchidas por IA, revisadas pelo usuário, com suporte para exportação em MD e HTML." />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

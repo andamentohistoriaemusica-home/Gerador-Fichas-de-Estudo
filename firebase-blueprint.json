@@ -1,0 +1,27 @@
+{
+  "entities": {
+    "Ficha": {
+      "title": "Ficha",
+      "description": "Uma ficha de estudo musical de artista, movimento, musica pivo, roteiro ou instrumento musical.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "tipo": { "type": "string", "enum": ["artista", "movimento", "musica", "roteiro", "instrumento"] },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "data": { "type": "object" },
+        "isFavorite": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "tipo", "titulo", "data", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "fichas/{fichaId}": {
+      "schema": "Ficha",
+      "description": "Colecao de fichas de estudos musicais dos usuarios."
+    }
+  }
+}
